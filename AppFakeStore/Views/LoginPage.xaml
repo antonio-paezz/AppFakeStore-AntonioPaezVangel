@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AppFakeStore.ViewModels"
+             x:Class="AppFakeStore.Views.LoginPage"
+             BackgroundColor="#F0F4F8"
+             Title="FakeStoreApi">
+
+    <ContentPage.BindingContext>
+        <vm:LoginViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid Padding="20" RowDefinitions="Auto,Auto,Auto,*" VerticalOptions="FillAndExpand">
+
+
+        <Label Text="Iniciar sesión" 
+               FontSize="24" 
+               FontAttributes="Bold" 
+               HorizontalOptions="Center" 
+               VerticalOptions="StartAndExpand"
+               TextColor="#333"
+               Margin="0,40,0,20"
+               Grid.Row="0"/>
+
+        <Frame HasShadow="True"
+               CornerRadius="20"
+               Padding="0"
+               BorderColor="#007ACC"
+               BackgroundColor="White"
+               HorizontalOptions="Center"
+               Grid.Row="1">
+            <Image Source="avatar.png"
+                   Aspect="AspectFill"
+                   HeightRequest="150"
+                   WidthRequest="150"
+                   HorizontalOptions="Center" />
+        </Frame>
+
+        <StackLayout Spacing="20" Grid.Row="2">
+            <StackLayout Orientation="Vertical">
+                <Label Text="Usuario" 
+                       FontSize="14"
+                       TextColor="#666"/>
+                <Entry Text="{Binding Username}" 
+                       Placeholder="Ingrese su usuario"
+                       FontSize="16"
+                       HeightRequest="50"
+                       BackgroundColor="#FFF"
+                       TextColor="#333"
+                       Margin="0,5,0,0"
+                       PlaceholderColor="#999"/>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical">
+                <Label Text="Contraseña" 
+                       FontSize="14"
+                       TextColor="#666"/>
+                <Entry Text="{Binding Password}" 
+                       Placeholder="Ingrese su contraseña" 
+                       IsPassword="True"
+                       FontSize="16"
+                       HeightRequest="50"
+                       BackgroundColor="#FFF"
+                       TextColor="#333"
+                       Margin="0,5,0,0"
+                       PlaceholderColor="#999"/>
+            </StackLayout>
+
+            <Button Text="Iniciar sesión"
+                    Command="{Binding LoginCommand}"
+                    FontSize="16"
+                    HeightRequest="50"
+                    BackgroundColor="#007ACC"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="End"
+                    Margin="0,10,0,0"/>
+
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   FontSize="14"
+                   HorizontalOptions="Center"
+                   VerticalOptions="Center"
+                   IsVisible="{Binding IsErrorVisible}"
+                   Margin="0,10,0,0"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>
